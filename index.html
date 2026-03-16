@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>બાલાજી ઇન્ડસ્ટ્રીઝ | શુદ્ધતાનું પ્રતીક</title>
+    <title>બાલાજી ઇન્ડસ્ટ્રીઝ | પ્રીમિયમ ગ્રેન કલેક્શન</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&family=Poppins:wght@100;300;400;600&display=swap');
 
         :root {
             --accent: #E5C76B;
             --bg: #050505;
-            --surface: #111111;
+            --surface: #121212;
             --text-main: #FFFFFF;
-            --text-dim: #B0B0B0;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
@@ -22,249 +21,120 @@
             color: var(--text-main);
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
-            padding-bottom: 90px;
         }
 
-        /* --- લોગો અને નેવિગેશન --- */
+        /* સ્મૂથ એનિમેશન */
+        .fade-in { animation: fadeIn 1.5s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- નેવિગેશન --- */
         nav {
-            padding: 20px 6%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: absolute;
-            top: 0;
-            width: 100%;
-            z-index: 100;
+            padding: 30px 6%;
+            display: flex; justify-content: center;
+            position: absolute; top: 0; width: 100%; z-index: 100;
         }
 
-        .logo-container {
-            width: 80px;
-            height: 80px;
-            background: rgba(229, 199, 107, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 50%;
-            padding: 10px;
-            border: 1px solid rgba(229, 199, 107, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        .nav-logo {
+            height: 60px; /* તમારા લોગોની સાઈઝ મુજબ એડજસ્ટ કરો */
+            filter: drop-shadow(0 0 10px rgba(229, 199, 107, 0.3));
         }
 
-        .logo-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .brand-name {
-            font-family: 'Playfair Display';
-            font-size: 1.2rem;
-            color: var(--accent);
-            letter-spacing: 4px;
-            font-weight: 900;
-        }
-
-        /* --- હીરો સેક્શન (તમારી ઇમેજ સાથે) --- */
+        /* --- હીરો સેક્શન --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-                        url('https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?q=80&w=1200') center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 8%;
-            clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                        url('image_e3b198.jpg') center/cover; /* અહીં સિંગલ બેગ વાળી ઈમેજ વાપરો */
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 0 8%;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
         }
 
-        .hero-text h1 {
-            font-family: 'Playfair Display';
-            font-size: 3.2rem;
-            line-height: 1;
-            margin-bottom: 20px;
-            color: #fff;
+        .hero h1 {
+            font-family: 'Playfair Display'; font-size: clamp(2.5rem, 8vw, 4.5rem);
+            line-height: 1.1; margin-bottom: 15px; color: var(--accent);
         }
 
-        .hero-text p {
-            font-weight: 200;
-            color: var(--text-dim);
-            letter-spacing: 1px;
-            font-size: 1rem;
-            max-width: 300px;
-            margin: 0 auto;
+        .hero p { font-weight: 200; letter-spacing: 1px; color: #ddd; max-width: 500px; }
+
+        /* --- પ્રોડક્ટ ડિસ્પ્લે --- */
+        .product-section { padding: 100px 6%; text-align: center; }
+        .product-section h2 { font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 50px; color: var(--accent); }
+
+        .image-showcase {
+            width: 100%; border-radius: 20px; overflow: hidden;
+            border: 1px solid var(--accent); margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
-        /* --- પ્રોડક્ટ કાર્ડ્સ --- */
-        .section-header {
-            padding: 60px 6% 20px;
-            text-align: center;
+        .image-showcase img { width: 100%; display: block; transition: 0.5s; }
+        .image-showcase:hover img { transform: scale(1.02); }
+
+        /* --- ફીચર્સ ટેબલ (તમારી ત્રીજી ઈમેજ માટે) --- */
+        .features {
+            background: var(--surface); padding: 60px 6%; border-radius: 30px;
+            margin: 0 6% 100px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;
         }
 
-        .section-header h2 {
-            font-family: 'Playfair Display';
-            font-size: 2rem;
-            color: var(--accent);
-            display: inline-block;
-            border-bottom: 1px solid var(--accent);
-            padding-bottom: 5px;
-        }
-
-        .product-scroller {
-            display: flex;
-            overflow-x: auto;
-            padding: 20px 6% 40px;
-            gap: 20px;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-        }
-
-        .product-scroller::-webkit-scrollbar { display: none; }
-
-        .p-card {
-            min-width: 85vw;
-            background: var(--surface);
-            border-radius: 30px;
-            padding: 15px;
-            scroll-snap-align: center;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .p-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 20px;
-        }
-
-        .p-info { padding: 20px 10px; }
-        .p-info h3 { font-family: 'Playfair Display'; font-size: 1.5rem; margin-bottom: 10px; color: var(--accent); }
-
-        .p-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .stat {
-            background: rgba(255,255,255,0.03);
-            padding: 10px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            text-align: center;
-        }
-
-        .stat b { display: block; color: var(--accent); font-size: 0.9rem; margin-top: 4px; }
+        .feature-card { text-align: left; padding: 20px; border-left: 1px solid var(--accent); }
+        .feature-card h3 { color: var(--accent); font-family: 'Playfair Display'; margin-bottom: 10px; }
 
         /* --- ફ્લોટિંગ એક્શન બાર --- */
         .action-bar {
-            position: fixed;
-            bottom: 25px;
-            left: 5%;
-            width: 90%;
-            background: rgba(20, 20, 20, 0.85);
-            backdrop-filter: blur(25px);
-            border-radius: 100px;
-            display: flex;
-            justify-content: space-around;
-            padding: 12px;
-            border: 1px solid rgba(229, 199, 107, 0.2);
-            z-index: 1000;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            position: fixed; bottom: 25px; left: 5%; width: 90%;
+            background: rgba(15, 15, 15, 0.9); backdrop-filter: blur(20px);
+            border-radius: 100px; display: flex; justify-content: space-around;
+            padding: 12px; border: 1px solid rgba(229, 199, 107, 0.3); z-index: 1000;
         }
 
-        .action-item {
-            text-decoration: none;
-            color: #fff;
-            font-size: 0.65rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .icon {
-            width: 35px;
-            height: 35px;
-            background: rgba(229, 199, 107, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
+        .action-item { text-decoration: none; color: #fff; font-size: 0.7rem; display: flex; flex-direction: column; align-items: center; gap: 5px; }
 
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo-container">
-            <img src="https://via.placeholder.com/150x150/000000/E5C76B?text=BALAJI" alt="Balaji Logo">
-        </div>
-        <div class="brand-name">BALAJI</div>
+        <img src="image_e3b488.jpg" alt="Balaji Logo" class="nav-logo">
     </nav>
 
-    <section class="hero">
-        <div class="hero-text">
-            <p style="letter-spacing: 5px; margin-bottom: 10px;">SINCE 1995</p>
-            <h1>શુદ્ધતાનું <br> સોપાન</h1>
-            <p>તમારા સ્વાસ્થ્ય માટે શ્રેષ્ઠ અને શુદ્ધ ધાન્યની પરંપરા.</p>
+    <header class="hero">
+        <div class="fade-in">
+            <h1>બાલાજી <br> પ્રીમિયમ કલેક્શન</h1>
+            <p>ખેતરથી રસોડા સુધીની શુદ્ધતાનો સંગમ. હવે નવા અને આધુનિક પેકિંગમાં ઉપલબ્ધ.</p>
+        </div>
+    </header>
+
+    <section class="product-section">
+        <h2 class="fade-in">અમારી વેરાયટી</h2>
+        
+        <div class="image-showcase fade-in">
+            <img src="image1.png" alt="Balaji Premium Bags">
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>પ્રીમિયમ ઘઉં</h3>
+                <p style="font-size: 0.9rem; opacity: 0.7;">પરિવારના સ્વાસ્થ્ય માટે સ્વચ્છ અને ગુણવત્તાયુક્ત પસંદગી.</p>
+            </div>
+            <div class="feature-card">
+                <h3>મોતી બાજરી</h3>
+                <p style="font-size: 0.9rem; opacity: 0.7;">પ્રાચીન સ્વાદ અને આધુનિક સ્વાસ્થ્યનો સમન્વય.</p>
+            </div>
+            <div class="feature-card">
+                <h3>શુદ્ધ મકાઈ</h3>
+                <p style="font-size: 0.9rem; opacity: 0.7;">રસોઈમાં લાવશે નવી ચમક અને અદભૂત સ્વાદ.</p>
+            </div>
         </div>
     </section>
 
-    <div class="section-header">
-        <h2>અમારા ઉત્પાદનો</h2>
-    </div>
-
-    <div class="product-scroller">
-        <div class="p-card">
-            <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?q=80&w=600" alt="Wheat">
-            <div class="p-info">
-                <h3>પ્રીમિયમ ઘઉં</h3>
-                <div class="p-stats">
-                    <div class="stat">પ્રોટીન<b>૧૩.૨%</b></div>
-                    <div class="stat">ભેજ<b>< ૧૧%</b></div>
-                    <div class="stat">શુદ્ધતા<b>૧૦૦%</b></div>
-                    <div class="stat">ગ્રેડ<b>A++</b></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="p-card">
-            <img src="https://images.unsplash.com/photo-1590080874088-eec64895b423?q=80&w=600" alt="Millet">
-            <div class="p-info">
-                <h3>મોતી બાજરી</h3>
-                <div class="p-stats">
-                    <div class="stat">આયર્ન<b>ઉચ્ચ</b></div>
-                    <div class="stat">ફાઈબર<b>ભરપૂર</b></div>
-                    <div class="stat">ટેસ્ટ<b>પરંપરાગત</b></div>
-                    <div class="stat">પેકિંગ<b>હવાચુસ્ત</b></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer style="padding: 60px 8% 120px; text-align: center; border-top: 1px solid #1a1a1a;">
-        <p style="color: var(--accent); letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 15px;">WE ARE LOCATED AT</p>
-        <p style="font-weight: 200; opacity: 0.7; font-size: 0.9rem;">પ્લોટ નં. ૧૨૩, ઇન્ડસ્ટ્રીયલ એરિયા, <br> રાજકોટ, ગુજરાત.</p>
-        <p style="margin-top: 30px; font-size: 0.7rem; opacity: 0.3;">© 2026 BALAJI INDUSTRIES</p>
+    <footer style="padding: 100px 6% 150px; text-align: center; border-top: 1px solid #222;">
+        <p style="color: var(--accent); letter-spacing: 3px; font-size: 0.8rem;">CONTACT US</p>
+        <p style="margin-top: 20px; font-weight: 200; opacity: 0.6;">GUJARAT, INDIA | +91 00000 00000</p>
     </footer>
 
     <div class="action-bar">
-        <a href="tel:+919999900000" class="action-item">
-            <div class="icon">📞</div>
-            <span>CALL</span>
-        </a>
-        <a href="https://wa.me/919999900000" class="action-item">
-            <div class="icon" style="color: #25D366;">💬</div>
-            <span>WHATSAPP</span>
-        </a>
-        <a href="https://maps.google.com" class="action-item">
-            <div class="icon" style="color: #4285F4;">📍</div>
-            <span>LOCATION</span>
-        </a>
+        <a href="tel:+910000000000" class="action-item"><span>📞</span> CALL</a>
+        <a href="https://wa.me/910000000000" class="action-item"><span>💬</span> WHATSAPP</a>
+        <a href="#" class="action-item"><span>📍</span> LOCATION</a>
     </div>
 
 </body>
